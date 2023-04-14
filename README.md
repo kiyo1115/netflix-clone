@@ -22,8 +22,6 @@ Features:
 
 **Node version 14.x**
 
-### Cloning the repository
-
 
 
 ### Install packages
