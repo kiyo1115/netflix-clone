@@ -1,4 +1,4 @@
-//データベースのmovie部分のデータを取得している（使用場所はmap関数で使用している）
+//データベースのmovie部分のデータを取得している
 import useSWR from "swr";
 import fetcher from "../libs/fetcher";
 

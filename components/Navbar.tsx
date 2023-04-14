@@ -1,3 +1,4 @@
+//header部分を整形。モバイルの時の挙動やスクロール時の挙動を中心に記載
 import { useCallback, useState, useEffect } from "react";
 import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";

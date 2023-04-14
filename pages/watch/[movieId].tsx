@@ -1,3 +1,5 @@
+//指定されたmovieIdからuseMovieを使いデータを取得し、そのURLをvideoとして
+//再生している
 import React from "react";
 
 import useMovie from "../../hooks/useMovie";

@@ -1,4 +1,5 @@
-//お気に入りに入っているデータを取得している
+//お気に入りに入っているデータを取得
+//ここで取得したものはtopページにマイリストとして表示される
 import useSWR from "swr";
 import fetcher from "../libs/fetcher";
 

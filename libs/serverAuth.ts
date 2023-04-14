@@ -1,4 +1,4 @@
-//emailの情報を元にユーザー情報を取得している
+//emailの情報を元にユーザー情報の全体を取得している
 import { NextApiRequest,NextApiResponse  } from "next";
 import { getSession } from "next-auth/react";
 import { getServerSession } from "next-auth";

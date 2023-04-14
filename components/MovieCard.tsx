@@ -1,3 +1,6 @@
+//一覧カードのhoverなどの作り込み
+//再生ボタン、お気に入りボタン、詳細ボタンを置き、お気に入りボタンを押した場合は
+//お気に入りでの処理をするためにFavoriteButtonにコンポーネント引き継ぎ
 import React from "react";
 
 import { BsFillPlayFill } from "react-icons/bs";

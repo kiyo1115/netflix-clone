@@ -1,3 +1,4 @@
+//ログインしているユーザー情報を取得する
 import { NextApiRequest, NextApiResponse } from "next";
 
 import serverAuth from "../../libs/serverAuth";

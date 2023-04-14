@@ -1,3 +1,4 @@
+//navbarでの連続する内容をひとまとめにしている。
 import React from "react";
 
 interface NavbarItemProps {

@@ -1,3 +1,4 @@
+//useMovieListから取得した映画情報を基にmap関数でlength分出力している
 import React from "react";
 
 import { isEmpty } from "lodash";

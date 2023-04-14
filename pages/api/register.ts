@@ -1,3 +1,4 @@
+//emailが重複していないかを確認し、入力したデータをデータベースに登録する
 import bcrypt from "bcrypt";
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from "../../libs/prismadb";

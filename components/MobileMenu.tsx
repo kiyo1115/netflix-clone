@@ -1,3 +1,4 @@
+//モバイルメニューの時の画面を追加
 import React from "react";
 
 interface MobileMenuProps {

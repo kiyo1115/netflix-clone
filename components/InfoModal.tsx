@@ -1,3 +1,5 @@
+//infoボタンを押したときの表示画面を作成
+//このコードは開いている状態から閉じる状態のみを管理
 import React, { useEffect, useState, useCallback } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -29,6 +31,7 @@ const InfoModal = ({ visible, onClose }: InfoModalProps) => {
 
   const handleClose = useCallback(() => {
     setIsVisible(false);
+    //300ミリ秒かけて閉じるアニメーション
     setTimeout(() => {
       onClose();
     }, 300);

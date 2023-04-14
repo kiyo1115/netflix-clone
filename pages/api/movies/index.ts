@@ -1,3 +1,4 @@
+//データベースのmovieにあるデータを抽出する
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from '../../../libs/prismadb';
 import serverAuth from "../../../libs/serverAuth";

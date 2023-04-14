@@ -1,3 +1,4 @@
+//お気に入りの外す処理をしている
 import { NextApiRequest, NextApiResponse } from "next";
 import prismadb from '@/libs/prismadb';
 
@@ -13,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const session = await getSession({ req });
 
     if (!session?.user?.email) {
-      throw new Error('Not signed in');
+      throw new Error('サインインしていません');
     }
 
     const { movieId } = req.body;
@@ -25,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (!existingMovie) {
-      throw new Error('Invalid ID');
+      throw new Error('無効なIDです');
     }
 
     const user = await prismadb.user.findUnique({
@@ -35,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (!user) {
-      throw new Error('Invalid email');
+      throw new Error('emailが存在します');
     }
 
     const updatedFavoriteIds = without(user.favoriteIds, movieId);

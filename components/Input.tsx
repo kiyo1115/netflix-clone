@@ -1,3 +1,4 @@
+//サインイン画面のインプットを作成
 import React from "react";
 
 interface InputProps {

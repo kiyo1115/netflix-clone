@@ -1,3 +1,4 @@
+//データサーバにアクセスし、現在の映画の数を取得し、ランダムで一つ取得する
 import { NextApiRequest, NextApiResponse } from "next";
 
 import prismadb from "../../libs/prismadb";

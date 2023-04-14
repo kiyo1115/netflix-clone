@@ -1,4 +1,6 @@
-// next-authライブラリとCredentialsプロバイダー、prismadbライブラリをインポートする
+//AuthOptionsの型で指定し、認証情報を作成。
+//その認証情報を基にNextAuthにて認証を促している
+//また、githubやgoogleの認証もできるようにしている
 import NextAuth,{AuthOptions} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import prismadb from "../../../libs/prismadb";
@@ -12,6 +14,7 @@ import {PrismaAdapter} from "@next-auth/prisma-adapter"
 
 
 // 以下の設定でCredentialsプロバイダーオブジェクトがproviders配列内に含まれるようにNextAuthオブジェクトをエクスポートする
+// authOptionsをAuthOptionの型での判別
 export const authOptions: AuthOptions = {
 
   //自作のプロバイダーを作成し、認証できるようにしている

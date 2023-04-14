@@ -1,6 +1,7 @@
-
+// zustandのcreate関数でグローバルで使用できるようにし
+//開閉しているかしていないかでmovieIdの入れ替え、開閉状況を
+//関数経由で変更している
 import {create} from "zustand"
-
 export interface ModalStoreInterface{
     movieId?:string;
     isOpen:boolean;
@@ -14,8 +15,6 @@ export interface ModalStoreInterface{
     closeModal:() => void
 }
 
-
-// zustandから元々用意されているcreate関数を使用している
 // create関数での引数はset、getが用意されている
 const useInfoModal = create<ModalStoreInterface>((set) =>({
     // 初期値として下記を保持するように設計

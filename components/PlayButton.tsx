@@ -1,5 +1,7 @@
+//playbuttonを押したときの挙動を整形。
+//buttonを押すと[movieId].tsxへmovieIdをもち
+//その情報を基にdata情報を取得し、URLにてビデオを再生
 import { useRouter } from "next/router";
-import react from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 
 interface PlayButtonProps {
