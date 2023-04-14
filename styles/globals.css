@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 他のtsxファイルでクラス名を書く際に下記の内容を記載しておくと継承される */
+
+body{
+    @apply bg-zinc-900 h-full overflow-x-hidden;
+}
+/* idに対して高さをフルに設定している */
+#__next{
+    @apply h-full;
+}
+
+html{
+    @apply h-full
+}

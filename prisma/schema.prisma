@@ -1,0 +1,93 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+//prisma経由でidを作成すると自動的に割り振られないため
+// @default(auto())　この一文が必要
+//@db.ObjectIdはMongoDBで使用される特殊なデータ型である「ObjectId」を、Prismaスキーマで使用できるようにするための指示
+// @map(*_id*)　Prisma が MongoDB の _id フィールドを使用するように指示しています。
+
+
+  // favoriteIds String[] @db.ObjectId　お気に入りはobjectIdを配列に入れるように構成している
+  //型の問題だが、arrayではなくstring[]で設定することでバグなく動く。ちなみにarrayでも可能らしい
+
+  // refresh_token String? @db.String
+  // string型であることを明記している
+
+  // onDelete:Cascade
+  // Userエンティティが削除されると、それに関連するすべてのSessionエンティティも削除されます。
+
+  // @@unique([provider,providerAccountId
+  // @@unique([identifier,token])
+  // この2つは２つの値の組み合わせが重複しないように指定しているもの
+
+// Userエンティティには、ユーザーに関する情報が含まれます。各フィールドは、実際のデータ形式とそのプロパティを指定します。例えば、idはAuto-Incrementの文字列型であり、MongoDBの特殊なObjectIdデータ型を使用しているため Prismaスキーマでも同じ指定がされています。また、他のフィールドには、一意制約（@unique）、デフォルト値（@default）、バリデーションロジックを定義する属性も設定されています。 favoriteIdsフィールドは、お気に入りの映画のObjectIdを持つ配列です。このフィールドには、MongoDBのデータ型であるObjectIdが指定されています。
+model User{
+  id String  @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  image String?
+  email String? @unique
+  emailVerified DateTime?
+  hashedPassword String?
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  favoriteIds String[] @db.ObjectId
+  sessions Session[]
+  accounts Account[]
+}
+
+// Accountエンティティには、OAuthやSNS経由でログインしたユーザーのアカウント情報が含まれます。userIdフィールドは、Userエンティティとの間のリレーションとして使用され、それぞれのuserのidがObjectIdとして設定されています。また、Prismaスキーマが使用できるようにするための指示が、MongoDBで使用される特殊なデータ型であるObjectIdとしても指定されています。
+model Account{
+  id String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String   @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.String
+  access_token       String?  @db.String
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.String
+  session_state      String?
+
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+
+  @@unique([provider,providerAccountId])
+}
+
+// Sessionエンティティには、ユーザーのセッション情報が含まれます。userIdフィールドは、Userエンティティとの間のリレーションとして使用され、オプションとしてonDelete:Cascadeがあります。これは、削除された場合に自動的に関連するデータを削除するように指示するものです。
+model Session {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String @unique
+  userId String @db.ObjectId
+  expires DateTime
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// VerificationTokenエンティティには、アカウント作成などのプロセスで使用されるトークンが含まれます。identifierフィールドは、ユニークなIDであり、tokenフィールドは、一意の認証トークンです。
+model VerificationToken{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token String @unique
+  expiers DateTime
+
+  @@unique([identifier,token])
+}
+
+// 最後に、映画を表す Movieエンティティが含まれます。このエンティティには、タイトル、Description、VideoUrl、ThumbnailUrl、Genre、Durationなど、映画に関する情報が含まれます。
+model Movie{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  videoUrl String
+  thumbnailUrl String
+  genre String
+  duration String
+}
