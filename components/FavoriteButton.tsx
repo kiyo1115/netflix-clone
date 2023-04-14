@@ -1,3 +1,4 @@
+//お気に入りの状況に合わせて、axiosのdeleteかpostメソッドを発火
 import axios from "axios";
 import React, { useCallback, useMemo } from "react";
 import { AiOutlinePlus, AiOutlineCheck } from "react-icons/ai";

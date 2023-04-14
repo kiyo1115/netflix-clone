@@ -1,3 +1,5 @@
+//動画再生部分の作成
+//More Info部分の挙動を追加
 import useBillboard from "../hooks/useBillboard";
 import useInfoModalStore from '../hooks/useInfoModalStore';
 

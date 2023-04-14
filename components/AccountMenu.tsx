@@ -1,3 +1,4 @@
+//ヘッダーアカウントの内容を記載
 import useCurrentUser from "../hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 import React from "react";

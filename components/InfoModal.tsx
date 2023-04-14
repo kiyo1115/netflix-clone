@@ -74,9 +74,9 @@ const InfoModal = ({ visible, onClose }: InfoModalProps) => {
           </div>
           <div className="px-12 py-8">
             <p className="text-green-400 font-semibold text-lg">New</p>
-            <p className="tet-white text-lg">{data?.duration}</p>
-            <p className="tet-white text-lg">{data?.genre}</p>
-            <p className="tet-white text-lg">{data?.description}</p>
+            <p className="text-white text-lg">{data?.duration}</p>
+            <p className="text-white text-lg">{data?.genre}</p>
+            <p className="text-white text-lg">{data?.description}</p>
 
           </div>
         </div>
