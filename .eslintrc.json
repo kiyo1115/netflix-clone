@@ -1,5 +1,8 @@
 {
+  // 「extends」プロパティを「next/core-web-vitals」に設定します。これは、「next」パッケージの「core-web-vitals」構成ファイルからルールを継承することを意味します。
+// 「ルール」プロパティは、カスタム ESLint ルールを指定するオブジェクトです。
   "extends": "next/core-web-vitals",
+  // 「@next/next/no-img-element」ルールを「off」に設定し、この特定のルールを無効にします。このルールは Next.js に関連しており、特定のアクセシビリティ属性を含めずに HTML 要素を直接使用することに対して警告します。
   "rules": {
     "@next/next/no-img-element": "off"
   }
